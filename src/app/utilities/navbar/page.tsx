@@ -36,13 +36,13 @@ const Navbar = () => {
             <Link href="/" className="text-white hover:text-gray-300 transition-colors">
               Beranda
             </Link>
-            <Link href="/movie-list" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/tentang-kami" className="text-white hover:text-gray-300 transition-colors">
               Tentang Kami
             </Link>
-            <Link href="/tvshow-list" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/layanan" className="text-white hover:text-gray-300 transition-colors">
               Layanan
             </Link>
-            <Link href="/popular" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/kontak" className="text-white hover:text-gray-300 transition-colors">
               Kontak
             </Link>
           </div>
@@ -66,13 +66,13 @@ const Navbar = () => {
               <Link href="/" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
                 Beranda
               </Link>
-              <Link href="/movies" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
+              <Link href="/tentang-kami" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
                 Tentang Kami
               </Link>
-              <Link href="/tv-shows" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
+              <Link href="/layanan" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
                 Layanan
               </Link>
-              <Link href="/popular" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
+              <Link href="/kontak" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
                 Kontak
               </Link>
             </div>
