@@ -21,28 +21,28 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-gradient-to-b from-black/80 to-transparent'
+      isScrolled ? 'bg-white shadow-md' : 'bg-white'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-2xl font-bold">
+            <Link href="/" className="text-2xl text-black font-bold">
             IREN
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/" className="text-black hover:text-gray-300 transition-colors">
               Beranda
             </Link>
-            <Link href="/tentang-kami" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/tentang-kami" className="text-black hover:text-gray-300 transition-colors">
               Tentang Kami
             </Link>
-            <Link href="/layanan" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/layanan" className="text-black hover:text-gray-300 transition-colors">
               Layanan
             </Link>
-            <Link href="/kontak" className="text-white hover:text-gray-300 transition-colors">
+            <Link href="/kontak" className="text-black hover:text-gray-300 transition-colors">
               Kontak
             </Link>
           </div>
