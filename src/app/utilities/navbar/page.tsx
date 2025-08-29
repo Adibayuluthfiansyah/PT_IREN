@@ -52,7 +52,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden text-white hover:text-gray-300"
+              className="md:hidden text-black hover:text-gray-300"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
