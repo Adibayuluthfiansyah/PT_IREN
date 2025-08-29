@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PT.IREN",
-  description: "PT.INTI REFORMASI",
+  title: "PT.INTI REFORMASI ENERGI",
+  description: "PT.INTI REFORMASI ENERGI",
 };
 
 export default function RootLayout({
