@@ -225,7 +225,7 @@ const KontakPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-orange-500 to-teal-500 text-white px-8 py-4 rounded-lg hover:from-orange-600 hover:to-teal-600 transition-all duration-300 font-bold flex items-center justify-center"
+                  className="w-full bg-black text-white px-8 py-4 rounded-lg hover:bg-orange-600 cursor-pointer transition-all duration-300 font-bold flex items-center justify-center"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Kirim Pesan
@@ -244,8 +244,8 @@ const KontakPage = () => {
                 <div className="space-y-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="flex items-start space-x-4">
-                      <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange-100 to-teal-100 rounded-full">
-                        <div className="text-orange-500">
+                      <div className="flex items-center justify-center w-12 h-12 bg-black rounded-full">
+                        <div className="text-white">
                           {info.icon}
                         </div>
                       </div>
