@@ -9,7 +9,9 @@ const LayananPage = () => {
       icon: <Code className="w-12 h-12" />,
       title: "Pengembangan Aplikasi",
       description: "Membangun aplikasi custom sesuai kebutuhan bisnis dengan teknologi terdepan dan arsitektur yang scalable.",
-      features: ["Web Application", "Mobile App", "Desktop Application", "API Development"]
+      features: ["Web Application", "Mobile App", "Desktop Application", "API Development"],
+      // iconsColor :"text-white",
+      // bgColor: "bg-black"
     },
     {
       icon: <Globe className="w-12 h-12" />,
@@ -53,7 +55,7 @@ const LayananPage = () => {
             LAYANAN KAMI
           </h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Solusi teknologi terdepan untuk mengembangkan bisnis Anda di era digital
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repellendus velit dolorum neque. Natus laudantium ipsa soluta rerum provident!
           </p>
           <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
         </div>
@@ -73,16 +75,15 @@ const LayananPage = () => {
               Layanan Profesional Kami
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              IREN Group menyediakan berbagai layanan IT profesional untuk membantu 
-              perusahaan Anda berkembang dengan teknologi terdepan
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, autem.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 border border-gray-100">
-                <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-100 to-teal-100 rounded-full mb-6 mx-auto">
-                  <div className="text-orange-500">
+                <div className="flex items-center justify-center w-20 h-20 bg-black rounded-full mb-6 mx-auto">
+                  <div className="text-white">
                     {service.icon}
                   </div>
                 </div>
@@ -95,13 +96,13 @@ const LayananPage = () => {
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-gray-700">
-                      <ArrowRight className="w-4 h-4 text-teal-500 mr-2" />
+                      <ArrowRight className="w-4 h-4 text-black mr-2" />
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <div className="text-center">
-                  <button className="bg-gradient-to-r from-orange-500 to-teal-500 text-white px-6 py-2 rounded-full hover:from-orange-600 hover:to-teal-600 transition-all duration-300 font-medium">
+                  <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-orange-500 transition-all duration-300 font-medium cursor-pointer">
                     Pelajari Lebih Lanjut
                   </button>
                 </div>
@@ -112,19 +113,19 @@ const LayananPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-orange-500 to-teal-500 text-white">
+      <section className="py-16 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
             Siap Mengembangkan Bisnis Anda?
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Hubungi kami sekarang untuk konsultasi gratis dan dapatkan solusi teknologi terbaik untuk bisnis Anda
+            Hubungi kami sekarang untuk konsultasi gratis dan dapatkan solusi terbaik untuk bisnis Anda
           </p>
           <div className="space-x-4">
-            <button className="bg-white text-orange-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-orange-500 transition-all duration-300 cursor-pointer">
               Hubungi Kami
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-500 transition-all duration-300">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-orange-500  transition-all duration-300 cursor-pointer">
               Portfolio Kami
             </button>
           </div>
