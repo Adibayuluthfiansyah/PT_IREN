@@ -1,8 +1,8 @@
+import TentangPage from "./tentang/page";
+
 
 export default function Home() {
   return (
-    <div>
-      
-    </div>
+    <TentangPage/>
   );
 }
