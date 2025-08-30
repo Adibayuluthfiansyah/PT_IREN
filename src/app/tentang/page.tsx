@@ -13,7 +13,7 @@ const TentangPage = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
             TENTANG KAMI
           </h1>
-          <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-red-500 mx-auto"></div>
         </div>
         {/* Decorative overlay text */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
@@ -32,10 +32,10 @@ const TentangPage = () => {
               <div className="mb-8">
                 <div className="text-6xl font-bold mb-4">
                   <div className="flex items-center">
-                    <span className="text-orange-500 text-8xl">I</span>
-                    <span className="text-teal-500 text-8xl">R</span>
-                    <span className="text-orange-500 text-8xl">E</span>
-                    <span className="text-teal-500 text-8xl">N</span>
+                    <span className="text-black text-8xl">L</span>
+                    <span className="text-red-500 text-8xl">O</span>
+                    <span className="text-black text-8xl">G</span>
+                    <span className="text-red-500 text-8xl">O</span>
                   </div>
                   <div className="text-2xl text-gray-700 mt-2 tracking-wider">
                     GROUP
@@ -44,49 +44,47 @@ const TentangPage = () => {
               </div>
             </div>
 
-            {/* Company Description */}
+            {/* Deskripsi Perusahaan */}
             <div className="space-y-6">
-              <p className="text-gray-700 text-lg leading-relaxed">
-                IREN GROUP adalah holding dari perusahaan-perusahaan yang memiliki bakat secara alamiah, tak pernah lelah sekaligus 
-                gigih. Group Perusahaan ini menuntut kesempurnaan dalam segala hal dan sangat kritis pada pekerjaan, pengembangan personil dan 
-                usaha ke depan.
+              <p className="text-lg leading-relaxed">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae molestiae ab nemo. Libero, impedit expedita? Ducimus quia minus suscipit saepe dicta voluptatibus porro quidem odio ab nihil cupiditate ipsam magni consequatur quos eaque dolore autem totam, aspernatur error similique possimus beatae recusandae! Distinctio modi natus labore quis nesciunt ex facilis.
               </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                IREN mempunyai akronim dari Inovatif Responsif Efisien Nyata Andal.
+              <p className=" text-lg leading-relaxed">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, aliquam?
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Vision and Mission */}
+      {/* Visi dan Misi */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Vision */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-teal-500 mb-8">VISI</h2>
-            <p className="text-xl text-gray-700 italic max-w-4xl mx-auto leading-relaxed">
-              Merubah masa depan yang lebih baik dengan pikiran dan perjuangan bersama
+            <h2 className="text-4xl font-bold mb-8">VISI</h2>
+            <p className="text-xl italic max-w-4xl mx-auto leading-relaxed">
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem!
             </p>
           </div>
 
           {/* Mission */}
           <div className="text-center">
-            <h2 className="text-4xl font-bold text-orange-500 mb-12">MISI</h2>
+            <h2 className="text-4xl font-bold mb-12">MISI</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="text-teal-500 flex-shrink-0 mt-1" size={24} />
-                  <p className="text-gray-700 text-left">
-                    memberikan pelayanan prima sesuai kebutuhan klien dengan SDM yang berkompeten
+                  <CheckCircle className="flex-shrink-0 mt-1" size={24} />
+                  <p className=" text-left">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, distinctio!
                   </p>
                 </div>
               </div>
               
               <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="text-teal-500 flex-shrink-0 mt-1" size={24} />
-                  <p className="text-gray-700 text-left">
+                  <CheckCircle className="flex-shrink-0 mt-1" size={24} />
+                  <p className="text-left">
                     mengutamakan kerjasama yang terbuka dan jujur demi tercipta tujuan bersama
                   </p>
                 </div>
@@ -94,9 +92,9 @@ const TentangPage = () => {
               
               <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-1">
                 <div className="flex items-start space-x-4">
-                  <CheckCircle className="text-teal-500 flex-shrink-0 mt-1" size={24} />
-                  <p className="text-gray-700 text-left">
-                    Bersikap profesional guna memberikan informasi dan teknologi sesuai sasaran
+                  <CheckCircle className=" flex-shrink-0 mt-1" size={24} />
+                  <p className="text-left">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, repellendus.
                   </p>
                 </div>
               </div>

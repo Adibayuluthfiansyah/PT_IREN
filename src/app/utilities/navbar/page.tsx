@@ -36,7 +36,7 @@ const Navbar = () => {
             <Link href="/" className="text-black hover:text-gray-300 transition-colors">
               Beranda
             </Link>
-            <Link href="/tentang-kami" className="text-black hover:text-gray-300 transition-colors">
+            <Link href="/tentang" className="text-black hover:text-gray-300 transition-colors">
               Tentang Kami
             </Link>
             <Link href="/layanan" className="text-black hover:text-gray-300 transition-colors">
