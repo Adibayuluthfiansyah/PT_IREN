@@ -63,7 +63,7 @@ const Navbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-black/95 backdrop-blur-md">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
+              <Link href="/beranda" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">
                 Beranda
               </Link>
               <Link href="/tentang-kami" className="block px-3 py-2 text-white hover:bg-gray-800 rounded-md">

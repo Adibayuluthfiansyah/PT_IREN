@@ -1,8 +1,8 @@
-import TentangPage from "./tentang/page";
+import Beranda from "./beranda/page";
 
 
 export default function Home() {
   return (
-    <TentangPage/>
+   <Beranda/>
   );
 }
