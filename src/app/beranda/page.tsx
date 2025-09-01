@@ -14,7 +14,7 @@ const Beranda = () => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa at veritatis ratione!
           </p>
           <div className="w-24 h-1 mx-auto p-2">
-            <button className="border-2 border-white px-8 py-3 rounded-full font-bold text-white hover:bg-orange-500 hover:border-orange-500 transition-colors duration-300">
+           <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
             Profil
           </button>
           </div>
