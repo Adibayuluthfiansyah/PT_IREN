@@ -15,7 +15,7 @@ const Beranda = () => {
           </p>
           <div className="w-24 h-1 mx-auto p-2">
            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
-            Profila Company
+            Profil Company
           </button>
           </div>
         </div>
