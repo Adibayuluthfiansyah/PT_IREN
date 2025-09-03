@@ -1,62 +1,56 @@
 'use client'
 
 import React from 'react';
-import { Code, Smartphone, Globe, Database, Shield, Headphones, ArrowRight } from 'lucide-react';
+import { Handshake, Diamond, Shield, Truck, FileText } from 'lucide-react';
 import Footer from '../footer/page';
 
 const LayananPage = () => {
   const services = [
     {
-      icon: <Code className="w-12 h-12" />,
-      title: "Pengembangan Aplikasi",
-      description: "Membangun aplikasi custom sesuai kebutuhan bisnis dengan teknologi terdepan dan arsitektur yang scalable.",
-      features: ["Web Application", "Mobile App", "Desktop Application", "API Development"],
+      icon: <Handshake className="w-8 h-8" />,
+      title: "Exploration",
+      description: "Layanan eksplorasi pertambangan sesuai kebutuhan perusahaan/organisasi."
     },
     {
-      icon: <Globe className="w-12 h-12" />,
-      title: "Website Development",
-      description: "Membuat website profesional yang responsif, SEO-friendly, dan user-friendly untuk meningkatkan online presence.",
-      features: ["Company Profile", "E-Commerce", "Landing Page", "Content Management"]
+      icon: <Diamond className="w-8 h-8" />,
+      title: "Mining",
+      description: "Layanan yang bergerak dipertambangan yang dilakukan oleh para profesional."
     },
     {
-      icon: <Database className="w-12 h-12" />,
-      title: "Sistem Informasi",
-      description: "Mengembangkan sistem informasi terintegrasi untuk mengelola data dan proses bisnis dengan efisien.",
-      features: ["ERP System", "CRM System", "Inventory Management", "HR Management"]
+      icon: <Shield className="w-8 h-8" />,
+      title: "Environmental",
+      description: "Mempelajari dan menyelesaikan permasalahan lingkungan seperti konservasi sumber daya air."
     },
     {
-      icon: <Shield className="w-12 h-12" />,
-      title: "Keamanan IT",
-      description: "Menyediakan solusi keamanan IT komprehensif untuk melindungi aset digital dan data perusahaan.",
-      features: ["Security Audit", "Penetration Testing", "Data Protection", "Network Security"]
+      icon: <Handshake className="w-8 h-8" />,
+      title: "Trading",
+      description: "Perdagangan jual beli barang atau jasa, baik ekspor maupun impor."
     },
     {
-      icon: <Smartphone className="w-12 h-12" />,
-      title: "Mobile Solutions",
-      description: "Menghadirkan solusi mobile yang inovatif untuk mempermudah akses layanan di era digital.",
-      features: ["iOS Development", "Android Development", "Cross Platform", "Mobile UI/UX"]
+      icon: <Truck className="w-8 h-8" />,
+      title: "Stevedoring/Cargodoring",
+      description: "Layanan bongkar muat/kargo untuk kebutuhan bisnis perusahaan/individual."
     },
     {
-      icon: <Headphones className="w-12 h-12" />,
-      title: "IT Consulting",
-      description: "Memberikan konsultasi IT profesional untuk strategi teknologi yang tepat sesuai kebutuhan bisnis.",
-      features: ["Technology Strategy", "System Architecture", "Digital Transformation", "Technical Support"]
+      icon: <FileText className="w-8 h-8" />,
+      title: "Licensing",
+      description: "Layanan perizinan yang mencakup perizinan tambang, dan lainnya."
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+      <section className="relative bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 text-white">
+        <div className="absolute inset-0 bg-black opacity-30"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            LAYANAN KAMI
+            LAYANAN
           </h1>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo repellendus velit dolorum neque. Natus laudantium ipsa soluta rerum provident!
+            Kami menawarkan berbagai layanan untuk membantu perusahaan/organisasi atau individual bekerja lebih baik. Kami dapat memberikan layanan yang disesuaikan dengan bisnis anda.
           </p>
-          <div className="w-24 h-1 bg-orange-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-teal-300 mx-auto"></div>
         </div>
         {/* Decorative overlay text */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
@@ -66,45 +60,31 @@ const LayananPage = () => {
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-16 bg-white">
+      {/* Services Section */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Layanan Profesional Kami
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, autem.
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">BIDANG USAHA</h2>
+            <div className="w-24 h-1 bg-orange-600 mx-auto mb-8"></div>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Kami menawarkan berbagai layanan untuk membantu perusahaan/organisasi atau individual bekerja lebih baik. Kami dapat memberikan layanan yang disesuaikan dengan bisnis anda. Layanan yang kami berikan mencakup.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 border border-gray-100">
-                <div className="flex items-center justify-center w-20 h-20 bg-black rounded-full mb-6 mx-auto">
-                  <div className="text-white">
-                    {service.icon}
+              <div key={index} className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
+                    <div className="text-teal-600">
+                      {service.icon}
+                    </div>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 text-center leading-relaxed">
+                <h3 className="text-xl font-bold mb-4 text-gray-900">{service.title}</h3>
+                <p className="text-gray-700">
                   {service.description}
                 </p>
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-gray-700">
-                      <ArrowRight className="w-4 h-4 text-black mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="text-center">
-                  <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-orange-500 transition-all duration-300 font-medium cursor-pointer">
-                    Pelajari Lebih Lanjut
-                  </button>
-                </div>
               </div>
             ))}
           </div>
@@ -112,19 +92,19 @@ const LayananPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white">
+      <section className="py-16 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
-            Siap Mengembangkan Bisnis Anda?
+            Siap Bekerja Sama dengan Kami?
           </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Hubungi kami sekarang untuk konsultasi gratis dan dapatkan solusi terbaik untuk bisnis Anda
+            Hubungi kami sekarang untuk konsultasi dan dapatkan solusi terbaik sesuai kebutuhan bisnis Anda
           </p>
           <div className="space-x-4">
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-orange-500 transition-all duration-300 cursor-pointer">
+            <button className="bg-white text-teal-600 px-8 py-3 rounded-full font-bold hover:bg-teal-50 transition-all duration-300 cursor-pointer">
               Hubungi Kami
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-orange-500  transition-all duration-300 cursor-pointer">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-teal-600 transition-all duration-300 cursor-pointer">
               Portfolio Kami
             </button>
           </div>
