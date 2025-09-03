@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
+import Footer from '../footer/page';
 
 const TentangPage = () => {
   return (
@@ -102,6 +103,7 @@ const TentangPage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

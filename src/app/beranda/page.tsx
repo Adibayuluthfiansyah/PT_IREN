@@ -1,5 +1,6 @@
 import React from 'react'
-import { CheckCircle } from 'lucide-react';
+import Link from 'next/link'
+import { CheckCircle, Menu, X, Mail, Phone, MapPin, Users, Lightbulb, Shield, Handshake, Diamond, Truck, FileText, ChevronUp } from 'lucide-react';
 
 const Beranda = () => {
   return (
@@ -14,9 +15,11 @@ const Beranda = () => {
           <p className="mb-8">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa at veritatis ratione!
           </p>
-          <button className="relative z-10 cursor-pointer bg-transparent border-1 border-white text-white px-8 py-4 rounded-full text-md font-medium hover:bg-orange-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-105 active:scale-95">
-            Profil Company
-          </button>
+            <Link href="/tentang">
+            <button className="relative z-10 cursor-pointer bg-transparent border-1 border-white text-white px-8 py-4 rounded-full text-md font-medium hover:bg-orange-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-105 active:scale-95">
+              Profil Company
+            </button>
+          </Link>
         </div>
         {/* Overlay text */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">

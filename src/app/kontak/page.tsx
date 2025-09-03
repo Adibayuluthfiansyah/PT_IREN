@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react';
-
+import Footer from '../footer/page';
 const KontakPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -333,8 +333,11 @@ const KontakPage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
+    
   );
 };
+
 
 export default KontakPage;

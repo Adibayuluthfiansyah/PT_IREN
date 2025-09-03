@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Code, Smartphone, Globe, Database, Shield, Headphones, ArrowRight } from 'lucide-react';
+import Footer from '../footer/page';
 
 const LayananPage = () => {
   const services = [
@@ -10,8 +11,6 @@ const LayananPage = () => {
       title: "Pengembangan Aplikasi",
       description: "Membangun aplikasi custom sesuai kebutuhan bisnis dengan teknologi terdepan dan arsitektur yang scalable.",
       features: ["Web Application", "Mobile App", "Desktop Application", "API Development"],
-      // iconsColor :"text-white",
-      // bgColor: "bg-black"
     },
     {
       icon: <Globe className="w-12 h-12" />,
@@ -131,6 +130,7 @@ const LayananPage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };
