@@ -43,9 +43,9 @@ const Beranda = () => {
                 <div className="text-6xl font-bold mb-4">
                   <div className="flex items-center">
                     <span className="text-black text-8xl">L</span>
-                    <span className="text-red-500 text-8xl">O</span>
+                    <span className="text-orange-500 text-8xl">O</span>
                     <span className="text-black text-8xl">G</span>
-                    <span className="text-red-500 text-8xl">O</span>
+                    <span className="text-orange-500 text-8xl">O</span>
                   </div>
                   <div className="text-2xl text-gray-700 mt-2 tracking-wider">
                     GROUP
