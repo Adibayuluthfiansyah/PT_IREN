@@ -1,272 +1,164 @@
 'use client'
 
-import React, { useState } from 'react' // Tambahkan { useState }
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CheckCircle,  Mail, Users, Lightbulb, Shield, Handshake, Diamond, Truck, FileText} from 'lucide-react';
+import {
+  CheckCircle, Mail, Users, Lightbulb, Shield,
+  Handshake, Diamond, Truck, FileText,
+  ArrowRight, TrendingUp, Award, Target
+} from 'lucide-react'
 
-const Beranda = () => {
-  const [email, setEmail] = useState(''); 
+type VisibilityMap = Record<string, boolean>
+
+// Hook counter
+const useAnimatedCounter = (end: number, duration: number = 2000): [number, React.Dispatch<React.SetStateAction<boolean>>] => {
+  const [count, setCount] = useState<number>(0)
+  const [hasStarted, setHasStarted] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!hasStarted) return
+    let startTime: number | null = null
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      setCount(Math.floor(progress * end))
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+    requestAnimationFrame(animate)
+  }, [hasStarted, end, duration])
+
+  return [count, setHasStarted]
+}
+
+const Beranda: React.FC = () => {
+  const [email, setEmail] = useState<string>('')
+  const [currentSlide, setCurrentSlide] = useState<number>(0)
+  const [isVisible, setIsVisible] = useState<VisibilityMap>({})
+
+  // Data carousel
+  const heroSlides = [
+    { title: "PT INTI REFORMASI ENERGI", subtitle: "Leading Indonesia's Energy Transformation", description: "Pioneering sustainable energy solutions for a greener tomorrow" },
+    { title: "INNOVATION & EXCELLENCE", subtitle: "Driving Mining Industry Forward", description: "Advanced mining technologies and environmental stewardship" },
+    { title: "SUSTAINABLE FUTURE", subtitle: "Environmental Responsibility", description: "Committed to sustainable practices and community development" }
+  ]
+
+  // Auto-slide
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [heroSlides.length])
+
+  // Intersection observer
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        setIsVisible((prev) => ({
+          ...prev,
+          [entry.target.id]: entry.isIntersecting,
+        }))
+      })
+    }, { threshold: 0.1 })
+
+    const elements = document.querySelectorAll<HTMLElement>('[id]')
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  // Counter values
+  const [projectsCount, startProjectsCount] = useAnimatedCounter(150)
+  const [clientsCount, startClientsCount] = useAnimatedCounter(89)
+  const [experienceCount, startExperienceCount] = useAnimatedCounter(15)
+
+  useEffect(() => {
+    if (isVisible.stats) {
+      startProjectsCount(true)
+      startClientsCount(true)
+      startExperienceCount(true)
+    }
+  }, [isVisible.stats, startProjectsCount, startClientsCount, startExperienceCount])
+
+  // Newsletter
+  const handleNewsletterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('Newsletter subscription:', email)
+    alert('Terima kasih! Email Anda telah terdaftar.')
+    setEmail('')
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white pt-20">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            PT.INTI REFORMASI ENERGI
-          </h1>
-          <p className="mb-8">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa at veritatis ratione!
-          </p>
-          <Link href="/tentang">
-            <button className="relative z-10 cursor-pointer bg-transparent border-1 border-white text-white px-8 py-4 rounded-full text-md font-medium hover:bg-orange-500 hover:text-gray-900 transition-all duration-300 transform hover:scale-105 active:scale-95">
-              Profil Company
+    <div className="min-h-screen bg-white">
+      {/* --- HERO SECTION --- */}
+      <section id="hero" className="relative h-screen bg-gradient-to-br from-[#2d3b2f] via-[#4a5c4d] to-[#6b7069] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40"></div>
+        <div className="relative h-full flex items-center justify-center z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+              {heroSlides[currentSlide].title}
+              <span className="block text-2xl md:text-4xl text-white/80 mt-2">
+                {heroSlides[currentSlide].subtitle}
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+              {heroSlides[currentSlide].description}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/tentang" className="bg-white text-[#2d3b2f] px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition">
+                Explore Our Story
+              </Link>
+              <Link href="/layanan" className="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-[#2d3b2f] transition">
+                Our Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- STATS SECTION --- */}
+      <section id="stats" className="py-16 bg-[#4a5c4d] text-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div>
+            <Target size={48} className="mx-auto mb-2" />
+            <div className="text-4xl font-bold">{projectsCount}+</div>
+            <p>Successfully Completed Projects</p>
+          </div>
+          <div>
+            <Award size={48} className="mx-auto mb-2" />
+            <div className="text-4xl font-bold">{clientsCount}+</div>
+            <p>Satisfied Clients Worldwide</p>
+          </div>
+          <div>
+            <TrendingUp size={48} className="mx-auto mb-2" />
+            <div className="text-4xl font-bold">{experienceCount}+</div>
+            <p>Years of Industry Experience</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- NEWSLETTER SECTION --- */}
+      <section id="newsletter" className="py-20 bg-gradient-to-br from-[#2d3b2f] via-[#4a5c4d] to-[#2d3b2f] text-white">
+        <div className="max-w-7xl mx-auto text-center px-4">
+          <h2 className="text-4xl font-bold mb-4">Hubungan & Bantuan</h2>
+          <p className="mb-6">Bergabunglah untuk update terbaru.</p>
+          <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto flex bg-white/10 backdrop-blur-sm p-2 rounded-full border border-white/20">
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Masukkan email Anda"
+              className="flex-1 px-4 py-2 bg-transparent text-white placeholder-white/60 focus:outline-none"
+            />
+            <button type="submit" className="px-6 py-2 bg-white text-[#2d3b2f] rounded-full font-semibold">
+              <span className="flex items-center gap-2">
+                <Mail size={20} /> Subscribe
+              </span>
             </button>
-          </Link>
-        </div>
-        {/* Overlay text */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
-          <div className="text-9xl font-bold tracking-widest transform rotate-12">
-            IREN GROUP
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Logo and Company Info */}
-            <div className="flex flex-col items-start">
-              <div className="mb-8">
-                <div className="text-6xl font-bold mb-4">
-                  <div className="flex items-center">
-                    <span className="text-black text-8xl">L</span>
-                    <span className="text-orange-500 text-8xl">O</span>
-                    <span className="text-black text-8xl">G</span>
-                    <span className="text-orange-500 text-8xl">O</span>
-                  </div>
-                  <div className="text-2xl text-gray-700 mt-2 tracking-wider">
-                    GROUP
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Deskripsi Perusahaan */}
-            <div className="space-y-6">
-              <p className="text-lg leading-relaxed">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae molestiae ab nemo. Libero, impedit expedita? Ducimus quia minus suscipit saepe dicta voluptatibus porro quidem odio ab nihil cupiditate ipsam magni consequatur quos eaque dolore autem totam, aspernatur error similique possimus beatae recusandae! Distinctio modi natus labore quis nesciunt ex facilis.
-              </p>
-              <p className=" text-lg leading-relaxed">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, aliquam?
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Visi dan Misi */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Vision */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8">VISI</h2>
-            <p className="text-xl italic max-w-4xl mx-auto leading-relaxed">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. A, voluptatem!
-            </p>
-          </div>
-
-          {/* Misi */}
-          <div className="text-center">
-            <h2 className="text-4xl font-bold mb-12">MISI</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="flex-shrink-0 mt-1" size={24} />
-                  <p className=" text-left">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, distinctio!
-                  </p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="flex-shrink-0 mt-1" size={24} />
-                  <p className="text-left">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, iusto?
-                  </p>
-                </div>
-              </div>
-              
-              <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-1">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className=" flex-shrink-0 mt-1" size={24} />
-                  <p className="text-left">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem, repellendus.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Kenapa Harus Kami Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">KENAPA HARUS IREN GROUP?</h2>
-            <div className="w-24 h-1 bg-orange-600 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam necessitatibus voluptate repellat facere nostrum! Aliquid debitis non iste in ex explicabo odit ipsum molestias repellat vero, enim aliquam alias autem harum architecto tempora. Minima repellendus cupiditate mollitia, libero modi similique, architecto porro quod saepe rerum esse, quibusdam nostrum officiis nemo?
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-700 p-8 rounded-lg text-white">
-              <div className="mb-6">
-                <Users size={48} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Professional</h3>
-              <p className="leading-relaxed">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo eos reiciendis consectetur?
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg border-2 border-gray-100 hover:border-gray-700 transition-colors">
-              <div className="mb-6 text-gray-700">
-                <Lightbulb size={48} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Creative</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita quis enim dolor deserunt, cumque iure.
-              </p>
-            </div>
-
-            <div className="bg-gray-700 p-8 rounded-lg text-white">
-              <div className="mb-6">
-                <Shield size={48} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Safety</h3>
-              <p className="leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis amet eveniet nam.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">BIDANG USAHA</h2>
-            <div className="w-24 h-1 bg-teal-600 mx-auto mb-8"></div>
-            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum inventore quis reprehenderit eum repellat quaerat soluta quisquam aliquam minima numquam.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Handshake className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Exploration</h3>
-              <p className="text-gray-700">
-                Layanan eksplorasi pertambangan sesuai kebutuhan perusahaan/organisasi.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Diamond className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Mining</h3>
-              <p className="text-gray-700">
-                Layanan yang bergerak dipertambangan yang dilakukan oleh para profesional.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Shield className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Environmental</h3>
-              <p className="text-gray-700">
-                Mempelajari dan menyelesaikan permasalahan lingkungan seperti konservasi sumber daya air.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Handshake className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Trading</h3>
-              <p className="text-gray-700">
-                Perdagangan jual beli barang atau jasa, baik ekspor maupun impor.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <Truck className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Stevedoring/Cargodoring</h3>
-              <p className="text-gray-700">
-                Layanan bongkar muat/kargo untuk kebutuhan bisnis perusahaan/individual.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                  <FileText className="text-teal-600" size={32} />
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-gray-900">Licensing</h3>
-              <p className="text-gray-700">
-                Layanan perizinan yang mencakup perizinan tambang, dan lainnya.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">HUBUNGAN & BANTUAN</h2>
-          <p className="text-xl mb-12">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga, nemo.
-          </p>
-          
-          <div className="max-w-md mx-auto">
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your e-mail here"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-white flex-1 px-6 py-4 rounded-l-full text-gray-900 focus:outline-none focus:ring-1 focus:ring-teal-500"
-              />
-              <button className="bg-orange-600 hover:bg-orange-700 cursor-pointer px-8 py-4 rounded-r-full transition-colors">
-                <Mail size={25} />
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </section>
     </div>
