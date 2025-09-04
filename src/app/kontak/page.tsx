@@ -1,8 +1,10 @@
 'use client'
 
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, User, MessageSquare, CheckCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import Footer from '../footer/page';
+
 const KontakPage = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -12,6 +14,8 @@ const KontakPage = () => {
     subject: '',
     message: ''
   });
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -25,7 +29,15 @@ const KontakPage = () => {
     e.preventDefault();
     // Handle form submission here
     console.log('Form submitted:', formData);
-    alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+    
+    // Show custom alert
+    setShowAlert(true);
+    
+    // Hide alert after 5 seconds
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 5000);
+    
     // Reset form
     setFormData({
       name: '',
@@ -42,8 +54,8 @@ const KontakPage = () => {
       icon: <MapPin className="w-6 h-6" />,
       title: "Alamat Kantor",
       details: [
-        "Jl. Teknologi No. 123",
-        "Pontianak, Kalimantan Barat",
+        "Jl. Ahmad Yani No. 123",
+        "Pontianak Kota, Kalimantan Barat",
         "Indonesia 78124"
       ]
     },
@@ -76,6 +88,21 @@ const KontakPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
+      {/* Shadcn Success Alert */}
+      {showAlert && (
+        <div className="fixed top-20 right-4 z-50 animate-slide-in-right max-w-md">
+          <Alert className="border-green-500 bg-green-50">
+            <CheckCircle className="h-4 w-4 text-green-500" />
+            <AlertDescription className="text-green-800">
+              <div className="font-medium mb-1">Pesan Berhasil Dikirim!</div>
+              <div className="text-sm">
+                Terima kasih {formData.name || 'atas pesan Anda'}. Tim kami akan menghubungi Anda dalam 24 jam.
+              </div>
+            </AlertDescription>
+          </Alert>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white">
         <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -198,12 +225,12 @@ const KontakPage = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   >
                     <option value="">Pilih layanan</option>
-                    <option value="web-development">Exploration</option>
-                    <option value="mobile-app">Mining</option>
-                    <option value="system-information">Environmental</option>
-                    <option value="it-consulting">Trading</option>
-                    <option value="security">Stevedoring/Cargodoring</option>
-                    <option value="other">Licensing</option>
+                    <option value="exploration">Exploration</option>
+                    <option value="mining">Mining</option>
+                    <option value="environmental">Environmental</option>
+                    <option value="trading">Trading</option>
+                    <option value="stevedoring">Stevedoring/Cargodoring</option>
+                    <option value="licensing">Licensing</option>
                     <option value="other">Lainnya</option>
                   </select>
                 </div>
@@ -267,14 +294,25 @@ const KontakPage = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Real Google Maps */}
               <div className="bg-white rounded-lg shadow-lg p-8">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">Lokasi Kami</h3>
-                <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <MapPin className="w-12 h-12 mx-auto mb-2" />
-                    <p>Google Maps</p>
-                    <p className="text-sm">Jl. Teknologi No. 123, Pontianak</p>
+                <div className="rounded-lg overflow-hidden shadow-md">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8173094315967!2d109.32227431475391!3d-0.02610943572853742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d59c2dc9e2d2d%3A0x9d5b6b88b8b8b8b8!2sJl.%20Ahmad%20Yani%2C%20Pontianak%20Kota%2C%20Kota%20Pontianak%2C%20Kalimantan%20Barat!5e0!3m2!1sen!2sid!4v1625123456789!5m2!1sen!2sid"
+                    width="100%"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Lokasi Kantor Iren Group"
+                  ></iframe>
+                </div>
+                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center text-sm text-gray-600">
+                    <MapPin className="w-4 h-4 mr-2 text-orange-500" />
+                    <span>Jl. Ahmad Yani No. 123, Pontianak Kota, Kalimantan Barat</span>
                   </div>
                 </div>
               </div>
@@ -334,11 +372,10 @@ const KontakPage = () => {
           </div>
         </div>
       </section>
+      
       <Footer/>
     </div>
-    
   );
 };
-
 
 export default KontakPage;
