@@ -198,11 +198,12 @@ const KontakPage = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   >
                     <option value="">Pilih layanan</option>
-                    <option value="web-development">Pengembangan Website</option>
-                    <option value="mobile-app">Aplikasi Mobile</option>
-                    <option value="system-information">Sistem Informasi</option>
-                    <option value="it-consulting">IT Consulting</option>
-                    <option value="security">Keamanan IT</option>
+                    <option value="web-development">Exploration</option>
+                    <option value="mobile-app">Mining</option>
+                    <option value="system-information">Environmental</option>
+                    <option value="it-consulting">Trading</option>
+                    <option value="security">Stevedoring/Cargodoring</option>
+                    <option value="other">Licensing</option>
                     <option value="other">Lainnya</option>
                   </select>
                 </div>
