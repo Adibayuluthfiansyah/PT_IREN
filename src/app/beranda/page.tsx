@@ -3,12 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {
-  CheckCircle, Mail, Users, Lightbulb, Shield,
-  Handshake, Diamond, Truck, FileText,
-  ArrowRight, TrendingUp, Award, Target,
-  Zap, Leaf, Globe, Building2, Factory,
-  ChevronRight, Star, Calendar, MapPin,
-  X
+  CheckCircle, Mail,  Lightbulb, Shield,Handshake, Diamond, Truck, ArrowRight, TrendingUp, Award, Target,Zap, Leaf, Globe, Building2, Factory, ChevronRight, Star, X
 } from 'lucide-react'
 
 type VisibilityMap = Record<string, boolean>
