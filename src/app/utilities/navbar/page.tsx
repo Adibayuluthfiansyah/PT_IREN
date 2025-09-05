@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Zap } from 'lucide-react'
 
 const navItems = [
   { label: 'Beranda', href: '/' },
@@ -25,54 +25,83 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white shadow-md text-black'
-          : 'bg-transparent text-white'
+          ? 'bg-white/95 backdrop-blur-md shadow-xl border-b border-[#4a5c4d]/10'
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
           <Link
             href="/"
-            className={`text-2xl font-bold tracking-wide ${
-              isScrolled ? 'text-black' : 'text-white'
+            className={`flex items-center gap-3 text-xl font-bold tracking-wide transition-all duration-300 hover:scale-105 ${
+              isScrolled ? 'text-[#2d3b2f]' : 'text-white'
             }`}
           >
-            IREN
+            <div className={`p-2 rounded-xl transition-all duration-300 ${
+              isScrolled 
+                ? 'bg-gradient-to-br from-[#2d3b2f] to-[#4a5c4d]' 
+                : 'bg-white/20 backdrop-blur-sm'
+            }`}>
+              <Zap className={`w-6 h-6 ${isScrolled ? 'text-white' : 'text-white'}`} />
+            </div>
+            <span className="hidden sm:block">PT INTI REFORMASI ENERGI</span>
+            <span className="sm:hidden">IREN</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`transition-colors ${
+                className={`px-4 py-2 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 relative group ${
                   pathname === item.href
                     ? isScrolled
-                      ? 'text-[#2d3b2f] font-semibold'
-                      : 'text-yellow-300 font-semibold'
+                      ? 'text-white bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] shadow-lg'
+                      : 'text-[#2d3b2f] bg-white/90 backdrop-blur-sm shadow-lg'
                     : isScrolled
-                    ? 'text-gray-700 hover:text-[#2d3b2f]'
-                    : 'text-gray-200 hover:text-yellow-200'
+                    ? 'text-[#6b7069] hover:text-[#2d3b2f] hover:bg-[#4a5c4d]/5'
+                    : 'text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm'
                 }`}
               >
                 {item.label}
+                {pathname === item.href && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-current rounded-full opacity-60"></div>
+                )}
               </Link>
             ))}
+          </div>
+
+          {/* CTA Button - Desktop */}
+          <div className="hidden lg:block">
+            <Link
+              href="/kontak"
+              className={`px-6 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center gap-2 ${
+                isScrolled
+                  ? 'bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] text-white hover:shadow-[#4a5c4d]/25'
+                  : 'bg-white text-[#2d3b2f] hover:bg-white/90 shadow-xl'
+              }`}
+            >
+              Hubungi Kami
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden focus:outline-none"
+            className={`md:hidden focus:outline-none p-2 rounded-xl transition-all duration-300 ${
+              isScrolled 
+                ? 'hover:bg-[#4a5c4d]/10 text-[#2d3b2f]' 
+                : 'hover:bg-white/10 text-white'
+            }`}
           >
             {isMobileMenuOpen ? (
-              <X size={28} className={isScrolled ? 'text-black' : 'text-white cursor-pointer' } />
+              <X size={24} />
             ) : (
-              <Menu size={28} className={isScrolled ? 'text-black' : 'text-white cursor-pointer'} />
+              <Menu size={24} />
             )}
           </button>
         </div>
@@ -80,21 +109,30 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md px-4 py-6 space-y-4">
-          {navItems.map((item) => (
+        <div className="md:hidden bg-white/95 backdrop-blur-md shadow-xl border-t border-[#4a5c4d]/10">
+          <div className="px-4 py-6 space-y-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block px-4 py-3 rounded-xl font-medium transition-all duration-300 transform hover:scale-105 ${
+                  pathname === item.href
+                    ? 'text-white bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] shadow-lg'
+                    : 'text-[#6b7069] hover:text-[#2d3b2f] hover:bg-[#4a5c4d]/5'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
-              key={item.href}
-              href={item.href}
+              href="/kontak"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block text-lg ${
-                pathname === item.href
-                  ? 'text-yellow-300 font-semibold'
-                  : 'text-white hover:text-yellow-200'
-              }`}
+              className="block mt-4 px-4 py-3 rounded-xl bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] text-white font-bold text-center transition-all duration-300 hover:shadow-lg"
             >
-              {item.label}
+              Hubungi Kami
             </Link>
-          ))}
+          </div>
         </div>
       )}
     </nav>
