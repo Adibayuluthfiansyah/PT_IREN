@@ -468,7 +468,7 @@ const Beranda: React.FC = () => {
                 <button 
                   onClick={handleNewsletterSubmit}
                   disabled={isSubmitting || !email.trim()}
-                  className="px-8 py-4 bg-white text-[#2d3b2f] rounded-xl font-bold hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 min-w-[160px] shadow-lg"
+                  className="px-8 py-4 bg-white text-[#2d3b2f] rounded-xl font-bold hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 min-w-[160px] shadow-lg cursor-pointer"
                 >
                   {isSubmitting ? (
                     <div className="w-6 h-6 border-3 border-[#2d3b2f]/30 border-t-[#2d3b2f] rounded-full animate-spin"></div>
