@@ -183,33 +183,6 @@ const Beranda: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Custom CSS for animations */}
-      <style jsx global>{`
-        @keyframes slide-in {
-          from {
-            transform: translateX(100%);
-            opacity: 0;
-          }
-          to {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        
-        .animate-slide-in {
-          animation: slide-in 0.5s ease-out;
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
-
       {/* Toast Notification */}
       {toast && (
         <Toast
