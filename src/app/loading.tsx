@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { Zap, Factory, Building2 } from 'lucide-react'
+import { Zap } from 'lucide-react'
 
 const Loading = () => {
   const [loading, setLoading] = useState(false)
