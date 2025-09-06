@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link
             href="/"
-            className={`flex items-center gap-3 text-xl font-bold tracking-wide transition-all duration-300 hover:scale-105 ${
+            className={`flex items-center gap-3 text-xl font-bold tracking-wide transition-all duration-300 hover:scale-101 ${
               isScrolled ? 'text-[#2d3b2f]' : 'text-white'
             }`}
           >
