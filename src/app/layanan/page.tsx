@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Footer from '../footer/page'
 import {
   Handshake, Diamond, Shield, Truck, FileText, ArrowRight, 
   CheckCircle, Star, Zap, Building2, Factory, Globe, 
@@ -342,6 +343,7 @@ const LayananPage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   )
 }
