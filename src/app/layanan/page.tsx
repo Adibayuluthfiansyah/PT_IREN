@@ -5,8 +5,8 @@ import Link from 'next/link'
 import Footer from '../footer/page'
 import {
   Handshake, Diamond, Shield, Truck, FileText, ArrowRight, 
-  CheckCircle, Star, Zap, Building2, Factory, Globe, 
-  Target, Award, TrendingUp, Mail, Phone, MapPin
+  CheckCircle, Star, Zap, Building2, Factory,
+  Target, Award, TrendingUp, Phone
 } from 'lucide-react'
 
 type VisibilityMap = Record<string, boolean>
