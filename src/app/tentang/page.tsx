@@ -4,14 +4,17 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Building2, Factory, ArrowRight, Phone, Lightbulb, Shield, 
-  Handshake, Leaf, Star, Target, Award, TrendingUp, Eye, Heart
+  Handshake, Leaf, Star, Target, Award, TrendingUp
 } from 'lucide-react';
 import Footer from '../footer/page';
 
 type VisibilityMap = Record<string, boolean>
 
-// Animated Counter Hook (same as home page)
-const useAnimatedCounter = (end: number, duration: number = 2500): [number, React.Dispatch<React.SetStateAction<boolean>>] => {
+// Animated Counter Hook
+const useAnimatedCounter = (
+  end: number,
+  duration: number = 2500
+): [number, React.Dispatch<React.SetStateAction<boolean>>] => {
   const [count, setCount] = useState<number>(0)
   const [hasStarted, setHasStarted] = useState<boolean>(false)
 
@@ -35,20 +38,26 @@ const useAnimatedCounter = (end: number, duration: number = 2500): [number, Reac
 }
 
 const TentangPage = () => {
-  const [isVisible, setIsVisible] = useState<VisibilityMap>({});
+  const [isVisible, setIsVisible] = useState<VisibilityMap>({
+    hero: true // fallback agar hero tetap kelihatan
+  });
 
-  // Intersection Observer for scroll animations (consistent with home page)
+  // Intersection Observer
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        setIsVisible((prev) => ({
-          ...prev,
-          [entry.target.id]: entry.isIntersecting,
-        }))
-      })
-    }, { threshold: 0.2 })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible((prev) => ({
+            ...prev,
+            [entry.target.id]: entry.isIntersecting,
+          }))
+        })
+      },
+      { threshold: 0.2 }
+    )
 
-    const elements = document.querySelectorAll<HTMLElement>('[id]')
+    // hanya observe section, bukan semua elemen dengan id
+    const elements = document.querySelectorAll<HTMLElement>('section[id]')
     elements.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
@@ -66,56 +75,73 @@ const TentangPage = () => {
     }
   }, [isVisible.stats, startProjectsCount, startClientsCount, startExperienceCount])
 
+
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* HERO SECTION - consistent with home page */}
-      <section id="hero" className="relative h-screen bg-gradient-to-br from-[#2d3b2f] via-[#4a5c4d] to-[#6b7069] text-white overflow-hidden">
+      <div className="min-h-screen bg-white overflow-x-hidden overflow-y-auto">
+      {/* HERO SECTION */}
+      <section
+        id="hero"
+        className="relative min-h-screen pt-25 bg-gradient-to-br from-[#2d3b2f] via-[#4a5c4d] to-[#6b7069] text-white overflow-hidden"
+      >
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-3/4 left-1/2 w-48 h-48 bg-white/5 rounded-full blur-xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div
+            className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-2xl animate-pulse"
+            style={{ animationDelay: '1s' }}
+          ></div>
+          <div
+            className="absolute top-3/4 left-1/2 w-48 h-48 bg-white/5 rounded-full blur-xl animate-pulse"
+            style={{ animationDelay: '2s' }}
+          ></div>
         </div>
-        
+
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
-        
+
         {/* Decorative overlay text */}
         <div className="absolute inset-0 flex items-center justify-center opacity-5">
           <div className="text-9xl font-bold tracking-widest transform rotate-12">
             ABOUT US
           </div>
         </div>
-        
+
         <div className="relative h-full flex items-center justify-center z-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="transform transition-all duration-1000">
               <div className="bg-white/10 backdrop-blur-sm rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-8 animate-pulse">
                 <Building2 className="w-12 h-12 text-white" />
               </div>
-              
+
               <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-pulse">
                   TENTANG KAMI
                 </span>
               </h1>
-              
+
               <h2 className="text-2xl md:text-4xl text-white/90 mb-6 font-light">
                 PT INTI REFORMASI ENERGI
               </h2>
-              
+
               <p className="text-lg md:text-xl mb-10 text-white/80 max-w-4xl mx-auto leading-relaxed">
-                Mempelopori transformasi energi berkelanjutan di Indonesia dengan inovasi terdepan dan komitmen terhadap masa depan yang lebih hijau
+                Mempelopori transformasi energi berkelanjutan di Indonesia dengan
+                inovasi terdepan dan komitmen terhadap masa depan yang lebih hijau
               </p>
-              
+
               <div className="w-32 h-1 bg-white/50 mx-auto mb-10"></div>
-              
+
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <Link href="#company-profile" className="group bg-white text-[#2d3b2f] px-10 py-4 rounded-full font-bold hover:bg-white/90 transition-all duration-300 flex items-center gap-3 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105">
+                <Link
+                  href="#company-profile"
+                  className="group bg-white text-[#2d3b2f] px-10 py-4 rounded-full font-bold hover:bg-white/90 transition-all duration-300 flex items-center gap-3 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 hover:scale-105"
+                >
                   <Factory className="w-5 h-5" />
                   Profil Perusahaan
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
-                <Link href="/kontak" className="group border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-[#2d3b2f] transition-all duration-300 flex items-center gap-3 backdrop-blur-sm hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105">
+                <Link
+                  href="/kontak"
+                  className="group border-2 border-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-[#2d3b2f] transition-all duration-300 flex items-center gap-3 backdrop-blur-sm hover:shadow-2xl transform hover:-translate-y-2 hover:scale-105"
+                >
                   <Phone className="w-5 h-5" />
                   Hubungi Kami
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
@@ -253,9 +279,6 @@ const TentangPage = () => {
           {/* Vision */}
           <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible['vision-mission'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="flex items-center justify-center mb-8">
-              <div className="p-4 rounded-2xl bg-gradient-to-br from-[#4a5c4d] to-[#2d3b2f] mr-4">
-                <Eye className="w-12 h-12 text-white" />
-              </div>
               <h2 className="text-4xl md:text-6xl font-bold text-[#2d3b2f]">VISI</h2>
             </div>
             <div className="w-32 h-1 bg-gradient-to-r from-[#4a5c4d] to-[#2d3b2f] mx-auto mb-8"></div>
@@ -270,9 +293,6 @@ const TentangPage = () => {
           <div className={`transform transition-all duration-1000 ${isVisible['vision-mission'] ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ transitionDelay: '200ms' }}>
             <div className="text-center mb-16">
               <div className="flex items-center justify-center mb-8">
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-[#4a5c4d] to-[#2d3b2f] mr-4">
-                  {/* <Heart className="w-12 h-12 text-white" /> */}
-                </div>
                 <h2 className="text-4xl md:text-6xl font-bold text-[#2d3b2f]">MISI</h2>
               </div>
               <div className="w-32 h-1 bg-gradient-to-r from-[#4a5c4d] to-[#2d3b2f] mx-auto mb-8"></div>
