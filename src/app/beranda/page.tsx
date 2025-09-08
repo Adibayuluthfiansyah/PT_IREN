@@ -276,7 +276,7 @@ const Beranda: React.FC = () => {
               >
                 <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${service.color} rounded-bl-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500`}></div>
                 
-                <div className="text-[#4a5c4d] group-hover:text-[#2d3b2f] transition-colors duration-500 mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                <div className="text-[#4a5c4d] group-hover:text-[#2d3b2f]  mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
                   {service.icon}
                 </div>
                 
