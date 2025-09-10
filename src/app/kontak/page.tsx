@@ -346,29 +346,6 @@ const KontakPage = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-bold text-[#2d3b2f] mb-3">
-                      Layanan yang Diminati
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#4a5c4d] focus:border-[#4a5c4d] transition-all duration-300 text-[#2d3b2f]"
-                      disabled={isSubmitting}
-                    >
-                      <option value="">Pilih layanan</option>
-                      <option value="exploration">Exploration</option>
-                      <option value="mining">Mining</option>
-                      <option value="environmental">Environmental</option>
-                      <option value="trading">Trading</option>
-                      <option value="stevedoring">Stevedoring/Cargodoring</option>
-                      <option value="licensing">Licensing</option>
-                      <option value="other">Lainnya</option>
-                    </select>
-                  </div>
-
-                  <div>
                     <label htmlFor="message" className="block text-sm font-bold text-[#2d3b2f] mb-3">
                       Pesan *
                     </label>
