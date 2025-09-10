@@ -365,7 +365,7 @@ const KontakPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting || !formData.name.trim() || !formData.email.trim() || !formData.message.trim()}
-                    className="w-full bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] text-white px-8 py-5 rounded-xl hover:from-[#4a5c4d] hover:to-[#2d3b2f] transition-all duration-300 font-bold flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none min-h-[60px]"
+                    className="w-full bg-gradient-to-r from-[#2d3b2f] to-[#4a5c4d] text-white px-8 py-5 rounded-xl hover:from-[#4a5c4d] hover:to-[#2d3b2f] transition-all duration-300 font-bold flex items-center justify-center gap-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none min-h-[60px] cursor-pointer"
                   >
                     {isSubmitting ? (
                       <div className="w-6 h-6 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
