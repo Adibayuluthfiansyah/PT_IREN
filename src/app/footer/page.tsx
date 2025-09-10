@@ -40,6 +40,9 @@ const Footer = () => {
     { icon: Linkedin, href: '#', name: 'LinkedIn' },
   ];
 
+  
+
+
   return (
     <footer className="bg-gradient-to-br from-[#2d3b2f] via-[#4a5c4d] to-[#2d3b2f] text-white relative overflow-hidden">
       {/* Background Effects */}
@@ -66,7 +69,7 @@ const Footer = () => {
               </div>
               
               <p className="text-white/80 mb-8 leading-relaxed text-lg max-w-md">
-                Menjadi mitra terpercaya dalam solusi energi berkelanjutan dengan teknologi mutakhir dan komitmen terhadap inovasi untuk masa depan yang lebih baik.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad numquam aliquam at possimus fugit esse corporis unde sed quisquam consequuntur.
               </p>
               
               {/* Contact Info */}
