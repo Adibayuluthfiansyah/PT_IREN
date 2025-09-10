@@ -151,7 +151,7 @@ const Footer = () => {
                     placeholder="Email address"
                     className="px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:bg-white/20 focus:border-white/40 transition-all duration-300"
                   />
-                  <button className="bg-white text-[#2d3b2f] px-6 py-3 rounded-xl font-bold hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                  <button className="bg-white text-[#2d3b2f] px-6 py-3 rounded-xl font-bold hover:bg-white/90 hover:scale-105 cursor-pointer transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
                     <Mail className="w-4 h-4" />
                     Subscribe
                   </button>
